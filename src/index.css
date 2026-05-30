@@ -1,0 +1,118 @@
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-sans: "Inter Variable", sans-serif;
+  --font-display: "Space Grotesk Variable", sans-serif;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+
+  to {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 48s linear infinite;
+}
+
+.animate-marquee:hover {
+  animation-play-state: paused;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-marquee {
+    animation: none;
+  }
+}
+
+@keyframes flow-x {
+  from {
+    transform: translateX(-100%);
+  }
+
+  to {
+    transform: translateX(220%);
+  }
+}
+
+.animate-flow-x {
+  animation: flow-x 2.4s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-flow-x {
+    animation: none;
+  }
+}
+
+@keyframes flow-y {
+  from {
+    transform: translateY(-100%);
+  }
+
+  to {
+    transform: translateY(220%);
+  }
+}
+
+.animate-flow-y {
+  animation: flow-y 2.2s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-flow-y {
+    animation: none;
+  }
+}
+
+.premium-card-glow {
+  position: relative;
+  isolation: isolate;
+}
+
+.premium-card-glow::before {
+  content: "";
+  position: absolute;
+  inset: -1px;
+  z-index: -1;
+  border-radius: inherit;
+  background:
+    radial-gradient(
+      420px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(14, 165, 233, 0.18),
+      transparent 42%
+    ),
+    radial-gradient(
+      360px circle at var(--mouse-x, 50%) var(--mouse-y, 50%),
+      rgba(16, 185, 129, 0.14),
+      transparent 48%
+    );
+  opacity: 0;
+  transition: opacity 220ms ease;
+}
+
+.premium-card-glow:hover::before {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .premium-card-glow::before {
+    transition: none;
+  }
+}

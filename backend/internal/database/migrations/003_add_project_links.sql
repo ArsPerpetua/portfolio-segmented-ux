@@ -1,0 +1,8 @@
+ALTER TABLE projects
+ADD COLUMN IF NOT EXISTS project_type VARCHAR(120) NOT NULL DEFAULT 'Portfolio Project';
+
+ALTER TABLE projects
+ADD COLUMN IF NOT EXISTS live_url TEXT;
+
+ALTER TABLE projects
+ADD COLUMN IF NOT EXISTS github_url TEXT;
