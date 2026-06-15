@@ -9,12 +9,50 @@
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
+  overflow-y: auto;
+  scrollbar-width: thin;
+  -ms-overflow-style: auto;
 }
 
 body {
   margin: 0;
   min-width: 320px;
+  min-height: auto;
+  overflow: hidden;
+  scrollbar-gutter: auto;
+}
+
+html::-webkit-scrollbar {
+  width: 14px;
+  height: 14px;
+}
+
+html::-webkit-scrollbar-thumb {
+  min-height: 56px;
+  border: 4px solid transparent;
+  border-radius: 999px;
+  background-clip: content-box;
+  background: rgba(148, 163, 184, 0.65);
+}
+
+html::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+#root {
   min-height: 100vh;
+}
+
+[data-hide-scrollbar] {
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+}
+
+[data-hide-scrollbar]::-webkit-scrollbar {
+  display: none;
+  width: 0;
+  height: 0;
 }
 
 @keyframes marquee {

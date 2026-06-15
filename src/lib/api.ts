@@ -27,7 +27,10 @@ async function fetchWithTimeout(
     });
   } catch (error) {
     if (error instanceof DOMException && error.name === "AbortError") {
-      throw new Error("Request timeout. Please make sure the backend API is running.");
+      throw new Error(
+        "Request timeout. Please make sure the backend API is running.",
+        { cause: error },
+      );
     }
 
     throw error;

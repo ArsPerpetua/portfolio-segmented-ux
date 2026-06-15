@@ -83,17 +83,17 @@ export default function HeroSection({
   return (
     <section
       id="hero"
-      className="relative overflow-hidden px-5 pb-16 pt-12 sm:px-6 md:pb-20 md:pt-16 lg:px-8 lg:pb-20 lg:pt-18"
+      className="relative overflow-hidden px-4 pb-14 pt-10 sm:px-6 md:pb-20 md:pt-16 lg:px-8 lg:pb-20 lg:pt-18"
     >
-      <div className="absolute left-1/2 top-0 -z-10 h-80 w-80 -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl dark:bg-cyan-400/14 md:h-96 md:w-96" />
+      <div className="absolute left-1/2 top-0 -z-10 h-64 w-64 -translate-x-1/2 rounded-full bg-cyan-400/10 blur-3xl dark:bg-cyan-400/14 md:h-96 md:w-96" />
       <div className="absolute right-0 top-24 -z-10 hidden h-80 w-80 rounded-full bg-emerald-400/10 blur-3xl dark:bg-emerald-400/12 lg:block" />
 
       <div className="mx-auto max-w-7xl">
-        <div className="grid gap-10 lg:grid-cols-[1fr_0.78fr] lg:items-center">
-          <div className="max-w-3xl">
-            <div className="mb-5 inline-flex max-w-full items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50 px-3.5 py-2 text-[0.72rem] font-semibold text-cyan-700 shadow-sm shadow-slate-950/[0.03] backdrop-blur-xl dark:border-cyan-400/20 dark:bg-cyan-400/10 dark:text-cyan-100 dark:shadow-none">
+        <div className="grid min-w-0 gap-8 lg:grid-cols-[minmax(0,1fr)_minmax(0,0.78fr)] lg:items-center lg:gap-10">
+          <div className="min-w-0 max-w-3xl">
+            <div className="mb-5 inline-flex max-w-full items-center gap-2 rounded-full border border-cyan-200 bg-cyan-50 px-3 py-1.5 text-[0.68rem] font-semibold text-cyan-700 shadow-sm shadow-slate-950/[0.03] backdrop-blur-xl dark:border-cyan-400/20 dark:bg-cyan-400/10 dark:text-cyan-100 dark:shadow-none sm:px-3.5 sm:py-2 sm:text-[0.72rem]">
               <BadgeCheck className="h-3.5 w-3.5 shrink-0 text-emerald-500 dark:text-emerald-300" />
-              <span className="truncate">{academicProof}</span>
+              <span className="break-words">{academicProof}</span>
             </div>
 
             <div className="mb-4 flex flex-wrap items-center gap-3">
@@ -109,18 +109,18 @@ export default function HeroSection({
               )}
             </div>
 
-            <h1 className="max-w-4xl font-display text-5xl font-semibold leading-[0.96] tracking-[-0.065em] text-slate-950 dark:text-white sm:text-6xl lg:text-[4.85rem] xl:text-[5.15rem]">
+            <h1 className="max-w-full break-words font-display text-[2.15rem] font-semibold leading-[1.02] tracking-[-0.05em] text-slate-950 dark:text-white min-[420px]:text-[2.45rem] sm:text-6xl sm:leading-[0.98] lg:text-[4.85rem] xl:text-[5.15rem]">
               {headline}
             </h1>
 
-            <p className="mt-6 max-w-2xl text-base leading-7 text-slate-600 dark:text-zinc-300 sm:text-lg sm:leading-8">
+            <p className="mt-5 max-w-2xl text-[0.98rem] leading-7 text-slate-600 dark:text-zinc-300 sm:mt-6 sm:text-lg sm:leading-8">
               {subtitle}
             </p>
 
-            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+            <div className="mt-7 flex w-full flex-col gap-3 sm:mt-8 sm:flex-row">
               <a
                 href="#projects"
-                className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-slate-950 px-6 text-sm font-semibold text-white shadow-xl shadow-slate-950/10 transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-zinc-950 dark:shadow-white/10 dark:hover:bg-zinc-100"
+                className="inline-flex h-11 w-full items-center justify-center gap-2 rounded-full bg-slate-950 px-5 text-sm font-semibold text-white shadow-xl shadow-slate-950/10 transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-zinc-950 dark:shadow-white/10 dark:hover:bg-zinc-100 sm:h-12 sm:w-auto sm:px-6"
               >
                 View Featured Work
                 <ArrowUpRight className="h-4 w-4" />
@@ -128,59 +128,83 @@ export default function HeroSection({
 
               <a
                 href="#contact"
-                className="inline-flex h-12 items-center justify-center rounded-full border border-slate-200 bg-white px-6 text-sm font-semibold text-slate-700 shadow-sm shadow-slate-950/5 backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:shadow-none dark:hover:border-cyan-400/35 dark:hover:bg-white/[0.06]"
+                className="inline-flex h-11 w-full items-center justify-center rounded-full border border-slate-200 bg-white px-5 text-sm font-semibold text-slate-700 shadow-sm shadow-slate-950/5 backdrop-blur-xl transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 dark:border-white/10 dark:bg-white/[0.03] dark:text-white dark:shadow-none dark:hover:border-cyan-400/35 dark:hover:bg-white/[0.06] sm:h-12 sm:w-auto sm:px-6"
               >
                 Start a Conversation
               </a>
             </div>
           </div>
 
-          <div className="relative">
-            <div className="relative overflow-hidden rounded-[2.4rem] border border-slate-200 bg-white p-3 shadow-2xl shadow-slate-950/[0.08] backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.03] dark:shadow-black/30">
-              <div className="relative overflow-hidden rounded-[1.9rem] border border-white/10 bg-slate-950">
+          <div className="relative min-w-0">
+            <div className="relative overflow-hidden rounded-[2rem] border border-slate-200 bg-white p-2.5 shadow-2xl shadow-slate-950/[0.08] backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.03] dark:shadow-black/30 sm:rounded-[2.4rem] sm:p-3">
+              <div className="overflow-hidden rounded-[1.6rem] border border-white/10 bg-slate-950 sm:rounded-[1.9rem]">
+                <div className="relative">
                 <img
                   src="/images/profile-portrait.jpg"
                   alt={`${fullName} professional portrait`}
-                  className="relative h-[27rem] w-full object-cover object-[center_16%] brightness-[0.9] contrast-105 saturate-[0.52] transition duration-500 hover:scale-[1.02] sm:h-[29rem] lg:h-[28rem]"
+                  className="relative h-[19.5rem] w-full object-cover object-[center_16%] brightness-[0.9] contrast-105 saturate-[0.52] transition duration-500 hover:scale-[1.02] min-[420px]:h-[22rem] sm:h-[29rem] lg:h-[28rem]"
                 />
 
                 <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(2,6,23,0.04),rgba(2,6,23,0.2)_40%,rgba(2,6,23,0.72)_78%,rgba(2,6,23,0.95)_100%)]" />
                 <div className="absolute inset-0 bg-slate-950/20 mix-blend-multiply" />
                 <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_18%,rgba(34,211,238,0.14),transparent_28%),radial-gradient(circle_at_82%_28%,rgba(16,185,129,0.12),transparent_24%),linear-gradient(135deg,rgba(15,23,42,0.12),rgba(15,23,42,0.02))]" />
 
-                <div className="absolute left-5 top-5 rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-xl">
+                <div className="absolute left-4 top-4 rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[0.64rem] font-semibold tracking-[0.01em] text-white backdrop-blur-xl sm:left-5 sm:top-5 sm:px-3 sm:py-1.5 sm:text-xs">
                   Available
                 </div>
 
-                <div className="absolute inset-x-0 bottom-0 p-6 sm:p-7">
-                  <div className="mb-4 flex flex-wrap gap-2">
-                    <span className="rounded-full border border-white/15 bg-white/10 px-3 py-1.5 text-xs font-semibold text-white backdrop-blur-xl">
+                <div className="absolute inset-x-0 bottom-0 hidden p-5 sm:block sm:p-7">
+                  <div className="mb-3 flex flex-wrap gap-2 sm:mb-4">
+                    <span className="rounded-full border border-white/15 bg-white/10 px-2.5 py-1 text-[0.66rem] font-semibold text-white backdrop-blur-xl sm:px-3 sm:py-1.5 sm:text-xs">
                       Full-Stack Engineer
                     </span>
 
-                    <span className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-3 py-1.5 text-xs font-semibold text-cyan-100 backdrop-blur-xl">
+                    <span className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-2.5 py-1 text-[0.66rem] font-semibold text-cyan-100 backdrop-blur-xl sm:px-3 sm:py-1.5 sm:text-xs">
                       AI Specialist
                     </span>
                   </div>
 
-                  <p className="font-display text-3xl font-semibold tracking-[-0.05em] text-white">
+                  <p className="max-w-[14rem] break-words font-display text-[1.5rem] font-semibold leading-[1.05] tracking-[-0.04em] text-white min-[420px]:max-w-[16rem] min-[420px]:text-[1.65rem] sm:max-w-none sm:text-3xl">
                     {fullName}
                   </p>
 
-                  <p className="mt-2 max-w-md text-sm leading-6 text-zinc-300">
+                  <p className="mt-2 max-w-[15rem] text-[0.84rem] leading-5.5 text-zinc-300 min-[420px]:max-w-[16rem] min-[420px]:text-[0.92rem] min-[420px]:leading-6 sm:max-w-md sm:text-sm">
                     Building scalable software systems, AI-powered products, and
                     workflow automation with a product-minded engineering approach.
                   </p>
+                </div>
+                </div>
+
+                <div className="space-y-4 bg-slate-950 px-4 pb-5 pt-4 sm:hidden">
+                  <div className="flex flex-wrap gap-2">
+                    <span className="rounded-full border border-white/12 bg-white/8 px-2.5 py-1 text-[0.68rem] font-semibold text-white backdrop-blur-xl">
+                      Full-Stack Engineer
+                    </span>
+                    <span className="rounded-full border border-cyan-300/20 bg-cyan-300/10 px-2.5 py-1 text-[0.68rem] font-semibold text-cyan-100 backdrop-blur-xl">
+                      AI Specialist
+                    </span>
+                  </div>
+
+                  <div className="space-y-2">
+                    <p className="break-words font-display text-[1.45rem] font-semibold leading-[1.08] tracking-[-0.04em] text-white">
+                      {fullName}
+                    </p>
+
+                    <p className="text-[0.88rem] leading-6 text-zinc-300">
+                      Building scalable software systems, AI-powered products, and
+                      workflow automation with a product-minded engineering approach.
+                    </p>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
-        <div className="mt-10 rounded-[2rem] border border-slate-200 bg-white p-5 shadow-2xl shadow-slate-950/[0.06] backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.03] dark:shadow-black/25 sm:p-6">
+        <div className="mt-8 rounded-[1.75rem] border border-slate-200 bg-white p-4 shadow-2xl shadow-slate-950/[0.06] backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.03] dark:shadow-black/25 sm:mt-10 sm:rounded-[2rem] sm:p-6">
           <div className="grid gap-6 lg:grid-cols-[1fr_1.5fr] lg:items-center">
             <div className="flex items-start gap-4">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-white dark:bg-cyan-400/10 dark:text-cyan-200">
+              <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-2xl bg-slate-950 text-white dark:bg-cyan-400/10 dark:text-cyan-200 sm:h-12 sm:w-12">
                 <ActiveIcon className="h-5 w-5" />
               </div>
 
@@ -189,30 +213,32 @@ export default function HeroSection({
                   Current Journey
                 </p>
 
-                <p className="mt-2 font-display text-2xl font-semibold leading-tight tracking-[-0.045em] text-slate-950 dark:text-white">
+                <p className="mt-2 font-display text-[1.6rem] font-semibold leading-tight tracking-[-0.045em] text-slate-950 dark:text-white sm:text-2xl">
                   {selectedSegment.headline}
                 </p>
               </div>
             </div>
 
             <div>
-              <p className="text-sm leading-7 text-slate-600 dark:text-zinc-300">
+              <p className="text-[0.95rem] leading-7 text-slate-600 dark:text-zinc-300 sm:text-sm">
                 {selectedSegment.description}
               </p>
 
-              <div className="mt-4 grid gap-2 sm:grid-cols-3">
+              <div className="mt-4 grid gap-2.5 sm:grid-cols-3">
                 {segmentSignals[activeSegment].map((signal) => (
                   <div
                     key={signal.label}
-                    className="rounded-2xl border border-slate-200 bg-slate-50 p-3 dark:border-white/10 dark:bg-zinc-950/70"
+                    className="rounded-2xl border border-slate-200 bg-slate-50 px-3 py-3 dark:border-white/10 dark:bg-zinc-950/70 sm:block sm:p-3"
                   >
-                    <p className="text-[0.65rem] font-semibold uppercase tracking-[0.18em] text-slate-500 dark:text-zinc-500">
+                    <div className="flex items-center justify-between gap-3 sm:block">
+                    <p className="text-[0.62rem] font-semibold uppercase tracking-[0.16em] text-slate-500 dark:text-zinc-500 sm:text-[0.65rem] sm:tracking-[0.18em]">
                       {signal.label}
                     </p>
 
-                    <p className="mt-1 text-xs font-semibold text-slate-950 dark:text-white">
+                    <p className="text-[0.84rem] font-semibold leading-5 text-slate-950 dark:text-white sm:mt-1 sm:text-xs">
                       {signal.value}
                     </p>
+                    </div>
                   </div>
                 ))}
               </div>

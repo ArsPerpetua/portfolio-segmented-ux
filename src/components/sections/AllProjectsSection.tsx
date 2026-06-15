@@ -97,7 +97,10 @@ export default function AllProjectsSection({
         </div>
 
         {!isLoading && categories.length > 1 && (
-          <div className="mt-8 flex gap-2 overflow-x-auto rounded-full border border-slate-200 bg-white/80 p-1 shadow-sm shadow-slate-950/[0.03] backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.03]">
+          <div
+            data-hide-scrollbar
+            className="mt-8 flex gap-2 overflow-x-auto rounded-full border border-slate-200 bg-white/80 p-1 shadow-sm shadow-slate-950/[0.03] backdrop-blur-xl dark:border-white/10 dark:bg-white/[0.03]"
+          >
             {categories.map((category) => {
               const isActive = activeCategory === category;
 

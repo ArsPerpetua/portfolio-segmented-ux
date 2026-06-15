@@ -7,10 +7,12 @@ import {
   Lock,
   TicketCheck,
 } from "lucide-react";
+import { useState } from "react";
 import { projectsBySegment } from "../../data/portfolioContent";
 import type { Project } from "../../types/api";
 import type { PortfolioSegment } from "../../types/portfolio";
 import { usePremiumCardGlow } from "../../hooks/usePremiumCardGlow";
+import ProjectDetailModal from "../shared/ProjectDetailModal";
 
 type FeaturedProjectsSectionProps = {
   activeSegment: PortfolioSegment;
@@ -61,26 +63,52 @@ export default function FeaturedProjectsSection({
   projects,
   isLoading = false,
 }: FeaturedProjectsSectionProps) {
+  const [selectedProject, setSelectedProject] = useState<{
+    id: string;
+    slug: string;
+    title: string;
+    category: string;
+    project_type: string;
+    summary: string;
+    description: string;
+    tech_stack: string[];
+    live_url: string | null;
+    github_url: string | null;
+    is_featured: boolean;
+    sort_order: number;
+  } | null>(null);
+
   const fallbackProjects = projectsBySegment[activeSegment];
 
   const displayProjects =
     projects && projects.length > 0
       ? projects.map((project) => ({
           id: project.slug,
+          slug: project.slug,
           title: project.title,
           tag: project.project_type || project.category,
+          category: project.category,
+          projectType: project.project_type,
+          summary: project.summary,
           description: project.segment_description,
           highlights: project.segment_highlights,
+          techStack: project.tech_stack,
           liveUrl: project.live_url,
           githubUrl: project.github_url,
           icon:
             projectIcons[project.slug as keyof typeof projectIcons] ??
             ArrowUpRight,
         }))
-      : fallbackProjects.map((project) => ({
+      : fallbackProjects.map((project, index) => ({
           ...project,
+          slug: project.id === "ticketing" ? "it-ticketing-kemenkum-ntb" : project.id,
+          category: project.tag,
+          projectType: project.tag,
+          summary: project.description,
+          techStack: project.highlights,
           liveUrl: null,
           githubUrl: null,
+          sortOrder: index + 1,
         }));
 
   const copy = sectionCopy[activeSegment];
@@ -140,8 +168,24 @@ export default function FeaturedProjectsSection({
               return (
                 <article
                   key={project.id}
+                  onClick={() =>
+                    setSelectedProject({
+                      id: project.id,
+                      slug: project.slug,
+                      title: project.title,
+                      category: project.category,
+                      project_type: project.projectType,
+                      summary: project.summary,
+                      description: project.description,
+                      tech_stack: project.techStack,
+                      live_url: project.liveUrl,
+                      github_url: project.githubUrl,
+                      is_featured: true,
+                      sort_order: index + 1,
+                    })
+                  }
                   onMouseMove={handleMouseMove}
-                  className="premium-card-glow group relative flex h-full flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-xl shadow-slate-950/[0.04] transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-950/[0.08] dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:hover:border-cyan-400/30 dark:hover:bg-white/[0.06]"
+                  className="premium-card-glow group relative flex h-full cursor-pointer flex-col overflow-hidden rounded-[2rem] border border-slate-200 bg-white shadow-xl shadow-slate-950/[0.04] transition duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-slate-950/[0.08] dark:border-white/10 dark:bg-white/[0.03] dark:shadow-none dark:hover:border-cyan-400/30 dark:hover:bg-white/[0.06]"
                 >
                   <div className="relative h-56 overflow-hidden border-b border-slate-200 bg-slate-100 dark:border-white/10 dark:bg-zinc-900">
                     <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_20%,rgba(14,165,233,0.24),transparent_32%),radial-gradient(circle_at_80%_30%,rgba(16,185,129,0.18),transparent_30%),linear-gradient(135deg,rgba(15,23,42,0.06),transparent)] dark:bg-[radial-gradient(circle_at_20%_20%,rgba(34,211,238,0.22),transparent_32%),radial-gradient(circle_at_80%_30%,rgba(16,185,129,0.18),transparent_30%),linear-gradient(135deg,rgba(255,255,255,0.05),transparent)]" />
@@ -211,6 +255,7 @@ export default function FeaturedProjectsSection({
                           href={project.liveUrl}
                           target="_blank"
                           rel="noreferrer"
+                          onClick={(event) => event.stopPropagation()}
                           className="inline-flex h-11 items-center justify-center gap-2 rounded-full bg-slate-950 px-5 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-zinc-950 dark:hover:bg-cyan-100"
                         >
                           <ExternalLink className="h-4 w-4" />
@@ -223,12 +268,37 @@ export default function FeaturedProjectsSection({
                           href={project.githubUrl}
                           target="_blank"
                           rel="noreferrer"
+                          onClick={(event) => event.stopPropagation()}
                           className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-slate-200 bg-white px-5 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-slate-300 dark:border-white/10 dark:bg-white/[0.03] dark:text-zinc-200 dark:hover:border-cyan-400/40"
                         >
                           <Code2 className="h-4 w-4" />
                           Source
                         </a>
                       )}
+
+                      <button
+                        onClick={(event) => {
+                          event.stopPropagation();
+                          setSelectedProject({
+                            id: project.id,
+                            slug: project.slug,
+                            title: project.title,
+                            category: project.category,
+                            project_type: project.projectType,
+                            summary: project.summary,
+                            description: project.description,
+                            tech_stack: project.techStack,
+                            live_url: project.liveUrl,
+                            github_url: project.githubUrl,
+                            is_featured: true,
+                            sort_order: index + 1,
+                          });
+                        }}
+                        className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-5 text-sm font-semibold text-slate-700 transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-white dark:border-white/10 dark:bg-zinc-950/70 dark:text-zinc-200 dark:hover:border-cyan-400/40 dark:hover:bg-white/[0.03]"
+                      >
+                        <ArrowUpRight className="h-4 w-4" />
+                        View Case Study
+                      </button>
 
                       {!project.liveUrl && !project.githubUrl && (
                         <div className="inline-flex h-11 items-center justify-center gap-2 rounded-full border border-slate-200 bg-slate-50 px-5 text-sm font-semibold text-slate-500 dark:border-white/10 dark:bg-zinc-950/70 dark:text-zinc-400">
@@ -244,6 +314,11 @@ export default function FeaturedProjectsSection({
           </div>
         )}
       </div>
+
+      <ProjectDetailModal
+        project={selectedProject}
+        onClose={() => setSelectedProject(null)}
+      />
     </section>
   );
 }

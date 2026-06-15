@@ -49,8 +49,11 @@ export default function SegmentSwitcher({
           : "pointer-events-none translate-y-6 opacity-0",
       ].join(" ")}
     >
-      <div className="mx-auto w-fit rounded-full border border-white/10 bg-zinc-950/88 p-1 shadow-2xl shadow-black/30 backdrop-blur-2xl">
-        <div className="flex items-center gap-1">
+      <div
+        data-hide-scrollbar
+        className="mx-auto w-full max-w-full overflow-x-auto rounded-full border border-white/10 bg-zinc-950/88 p-1 shadow-2xl shadow-black/30 backdrop-blur-2xl lg:w-fit"
+      >
+        <div className="flex min-w-max items-center gap-1">
           {segmentOptions.map((segment) => {
             const isActive = activeSegment === segment.id;
 
@@ -61,7 +64,7 @@ export default function SegmentSwitcher({
                   onSegmentChange(segment.id, "floating_segment_switcher")
                 }
                 className={[
-                  "rounded-full px-4 py-2 text-sm font-semibold transition-all duration-300 sm:px-5",
+                  "shrink-0 whitespace-nowrap rounded-full px-3.5 py-2 text-sm font-semibold transition-all duration-300 sm:px-5",
                   isActive
                     ? "bg-white text-zinc-950 shadow-md shadow-white/10"
                     : "text-zinc-400 hover:bg-white/[0.06] hover:text-white",

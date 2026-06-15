@@ -64,18 +64,18 @@ export default function Navbar({ activeSegment, profile }: NavbarProps) {
 
   return (
     <header className="sticky top-0 z-50 border-b border-slate-200/70 bg-white/85 backdrop-blur-2xl dark:border-white/10 dark:bg-zinc-950/85">
-      <nav className="mx-auto flex h-16 max-w-7xl items-center justify-between px-5 sm:px-6 lg:h-[4.5rem] lg:px-8">
-        <a href="#" className="group flex min-w-0 items-center gap-3">
-          <div className="grid h-10 w-10 shrink-0 place-items-center rounded-2xl border border-slate-200 bg-slate-950 text-[0.72rem] font-bold text-white shadow-sm shadow-slate-950/10 transition group-hover:-translate-y-0.5 dark:border-white/10 dark:bg-white dark:text-zinc-950 dark:shadow-black/20">
+      <nav className="mx-auto flex h-14 max-w-7xl items-center justify-between gap-3 px-4 sm:h-16 sm:px-6 lg:h-[4.5rem] lg:px-8">
+        <a href="#" className="group flex min-w-0 items-center gap-2.5 sm:gap-3">
+          <div className="grid h-9 w-9 shrink-0 place-items-center rounded-2xl border border-slate-200 bg-slate-950 text-[0.68rem] font-bold text-white shadow-sm shadow-slate-950/10 transition group-hover:-translate-y-0.5 dark:border-white/10 dark:bg-white dark:text-zinc-950 dark:shadow-black/20 sm:h-10 sm:w-10 sm:text-[0.72rem]">
             DA
           </div>
 
           <div className="min-w-0">
-            <p className="truncate font-display text-[1.08rem] font-semibold tracking-[-0.035em] text-slate-950 dark:text-white sm:text-[1.12rem]">
+            <p className="truncate font-display text-[0.98rem] font-semibold tracking-[-0.035em] text-slate-950 dark:text-white sm:text-[1.12rem]">
               {displayName}
             </p>
 
-            <div className="mt-0.5 flex items-center gap-2">
+            <div className="mt-0.5 hidden items-center gap-2 min-[380px]:flex">
               <span className="h-1.5 w-1.5 rounded-full bg-emerald-400" />
               <p className="truncate text-[0.78rem] font-medium text-slate-500 dark:text-zinc-400">
                 {selectedSegment.label}
@@ -96,11 +96,11 @@ export default function Navbar({ activeSegment, profile }: NavbarProps) {
           ))}
         </div>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex shrink-0 items-center gap-2">
           <button
             onClick={toggleTheme}
             aria-label="Toggle theme"
-            className="group grid h-10 w-10 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm shadow-slate-950/[0.04] transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 dark:border-white/10 dark:bg-white/[0.03] dark:text-zinc-200 dark:shadow-black/20 dark:hover:border-cyan-400/35 dark:hover:bg-white/[0.06]"
+            className="group grid h-9 w-9 place-items-center rounded-full border border-slate-200 bg-white text-slate-700 shadow-sm shadow-slate-950/[0.04] transition hover:-translate-y-0.5 hover:border-slate-300 hover:bg-slate-50 dark:border-white/10 dark:bg-white/[0.03] dark:text-zinc-200 dark:shadow-black/20 dark:hover:border-cyan-400/35 dark:hover:bg-white/[0.06] sm:h-10 sm:w-10"
           >
             {isDark ? (
               <Sun className="h-4 w-4 transition group-hover:rotate-12" />
@@ -111,11 +111,11 @@ export default function Navbar({ activeSegment, profile }: NavbarProps) {
 
           <a
             href="/cv.pdf"
-            className="inline-flex h-10 items-center gap-2 rounded-full bg-slate-950 px-4 text-sm font-semibold text-white shadow-lg shadow-slate-950/10 transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-zinc-950 dark:shadow-white/10 dark:hover:bg-zinc-100 sm:px-5"
+            className="inline-flex h-9 items-center gap-2 rounded-full bg-slate-950 px-3.5 text-sm font-semibold text-white shadow-lg shadow-slate-950/10 transition hover:-translate-y-0.5 hover:bg-slate-800 dark:bg-white dark:text-zinc-950 dark:shadow-white/10 dark:hover:bg-zinc-100 sm:h-10 sm:px-5"
           >
             <Download className="h-4 w-4" />
-            <span className="hidden sm:inline">Download CV</span>
-            <span className="sm:hidden">CV</span>
+            <span className="hidden min-[420px]:inline sm:inline">Download CV</span>
+            <span className="min-[420px]:hidden">CV</span>
           </a>
         </div>
       </nav>
